@@ -1,0 +1,46 @@
+[project]
+name = "k-srme"
+dynamic = ["version"]
+description = "Thermal conductivity test for foundation interatomic potentials"
+authors = [
+    {name = "Balázs Póta"},
+    {name = "Paramvir Ahlawat"},
+    {name = "Gábor Csányi"},
+    {name = "Michele Simoncelli", email = "ms2855@cam.ac.uk"}
+]
+readme = "README.md"
+license = {text = "GPL-3.0-only"}
+requires-python = ">=3.10"
+dependencies = [
+    "numpy",
+    "tqdm",
+    "ase>=3.23.0",
+    "h5py",
+    "pandas>=2.2.3",
+    "spglib"
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12"
+]
+
+[project.optional-dependencies]
+dev = ["phono3py","phonopy>=2.26.6"]
+
+[project.urls]
+homepage = "https://github.com/MPA2suite/k-srme"
+
+
+
+
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["k_srme*"]
+
+[tool.setuptools.dynamic]
+version = {attr = "k_srme.__version__"}

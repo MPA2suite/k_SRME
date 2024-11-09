@@ -1,0 +1,28 @@
+# Byte-compiled / optimized / DLL files__pycache__/
+*.py[cod]
+# C extensions*.so
+# Distribution / packagingbin/
+build/
+develop-eggs/
+dist/
+eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+# Installer logspip-log.txt
+pip-delete-this-directory.txt
+
+*.slurm
+slurm*
+
+all_kappas*
+old_kappas*
+benchmark_kappas*
+*.log
+
+conductivity_*-???.json.gz

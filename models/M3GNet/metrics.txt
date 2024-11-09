@@ -1,0 +1,214 @@
+MODEL: M3GNet
+	mean SRME: 1.4071813798403001
+	mean SRE: 1.333727711521498
+               desc    SRME     SRE  kappa_TOT_ave  DFT_kappa_TOT_ave  \
+mp_id                                                                   
+mp-2472      SrO-rs  0.3884  0.2126         7.9082             9.7896   
+mp-2542      BeO-wz  1.3858  1.3582        55.5711           290.7743   
+mp-8884     ZnTe-wz  1.9674  1.9669         0.1264            15.1362   
+mp-1541     BeSe-zb  1.8918  1.8912         2.6947            96.4087   
+mp-23295    RbCl-rs  0.8841  0.8405         0.8087             1.9812   
+mp-23703     LiH-rs  1.5233  1.4917         3.1106            21.3691   
+mp-1183441  BeTe-wz  1.6469  1.6370         6.3999            64.1250   
+mp-8883     GaAs-wz  1.7072  1.6899         2.4184            28.7777   
+mp-22913    CuBr-zb  1.4867  1.4073         0.4800             2.7596   
+mp-1265      MgO-rs  0.3590  0.1425        41.2601            47.5887   
+mp-24721     RbH-rs  1.2301  0.8897         1.6435             4.2772   
+mp-1008559    BP-wz  2.0000  2.0000            NaN           372.4174   
+mp-406      CdTe-zb  1.6827  1.6803         0.5645             6.4987   
+mp-10695     ZnS-zb  1.4665  1.3920         5.7386            32.0174   
+mp-682       NaF-rs  0.4813  0.3657        15.6508            22.6549   
+no-mp-4      BeS-wz  1.8802  1.8777         3.8075           120.6846   
+mp-569346    CuI-wz  2.0000  2.0000            NaN             6.4161   
+mp-13033    MgTe-zb  1.7874  1.7856         0.8749            15.4477   
+mp-2172     AlAs-zb  1.6487  1.6339         8.7924            87.2670   
+mp-19717    PbTe-rs  1.7740  1.7709         0.0582             0.9580   
+mp-463        KF-rs  0.5143  0.3790         4.6429             6.8138   
+mp-8882      GaP-wz  1.8765  1.8726         3.1836            96.8006   
+mp-966800    InP-wz  1.9040  1.9016         1.8785            74.4684   
+mp-1156     GaSb-zb  1.8819  1.8798         1.0418            33.6205   
+mp-22905    LiCl-rs  0.7723  0.6780         1.7868             3.6197   
+mp-1672      CaS-rs  0.5479  0.4400        17.2288            26.9473   
+mp-8880      AlP-wz  1.4753  1.4548        12.2217            77.4521   
+mp-10044     BAs-zb  2.0000  2.0000            NaN          1256.8155   
+mp-20305    InAs-zb  1.8708  1.8677         0.7295            21.3320   
+mp-2201     PbSe-rs  0.8376  0.4689         0.5236             0.8443   
+mp-23870     NaH-rs  1.5704  1.5650         1.9194            15.7299   
+no-mp-3     BeSe-wz  1.7543  1.7502         5.2985            79.5376   
+mp-8062      SiC-zb  1.2740  1.0760       109.7730           365.4348   
+mp-1190     ZnSe-zb  1.8362  1.8327         0.6642            15.2163   
+mp-22903     RbI-rs  1.9582  1.9582         0.0188             1.7764   
+mp-1500      BaS-rs  0.8937  0.8528         2.5036             6.2258   
+mp-1007661  InSb-wz  1.9090  1.9047         0.2552            10.4614   
+mp-422       BeS-zb  1.9322  1.9319         2.5386           146.6414   
+mp-22895     CuI-zb  2.0000  2.0000            NaN             6.6405   
+mp-23193     KCl-rs  0.7522  0.6983         2.9309             6.0752   
+mp-7631      SiC-wz  1.2930  1.2579        83.2346           365.4157   
+mp-380      ZnSe-wz  1.5557  1.5250         1.9872            14.7480   
+no-mp-2      CuH-zb  0.9593  0.8381        36.6640            15.0102   
+mp-1700      AlN-zb  0.4552  0.3863       144.7714           214.0832   
+mp-1784      CsF-rs  0.6050  0.4133         1.0519             1.5999   
+mp-22862    NaCl-rs  0.4735  0.4038         4.7172             7.1038   
+mp-580941    AgI-wz  1.4729  1.3841         0.3024             1.6617   
+mp-20411     InN-zb  1.4235  1.3975        16.9325            95.4804   
+mp-22914    CuCl-zb  2.0000  2.0000            NaN             1.6759   
+mp-22867    RbBr-rs  1.7127  1.6172         0.3312             3.1301   
+mp-1070     CdSe-wz  1.6103  1.5117         1.3443             9.6687   
+mp-2653       BN-wz  1.8622  1.8606        20.4149           565.2868   
+mp-252      BeTe-zb  1.7351  1.7337         5.5804            78.2495   
+mp-2534     GaAs-zb  1.6817  1.6686         2.8743            31.8209   
+mp-24084      KH-rs  1.0258  0.6043        15.4965             8.3053   
+mp-1519     CaTe-rs  0.7300  0.4290         5.7775             8.9325   
+mp-1018059  GaSb-wz  1.9052  1.9042         0.5791            23.5927   
+mp-2691     CdSe-zb  1.5396  1.4968         1.5435            10.7268   
+mp-1639       BN-zb  1.8865  1.8841        19.6431           658.3405   
+mp-1415     CaSe-rs  1.4521  1.4485         2.4130            15.0871   
+mp-23268     NaI-rs  0.4156  0.0126         1.6110             1.6315   
+mp-2133      ZnO-wz  0.7195  0.6635        24.6274            49.0794   
+mp-2490      GaP-zb  1.8300  1.8219         4.1271            88.5674   
+mp-20351     InP-zb  1.9203  1.9191         1.6349            79.2487   
+mp-1132      CdO-rs  1.2476  1.2112         1.9561             7.9633   
+mp-2605      CaO-rs  0.4471  0.2975        17.4154            23.5026   
+mp-12779    CdTe-wz  1.7147  1.7099         0.4342             5.5542   
+mp-561286    ZnS-wz  1.6004  1.5634         4.2940            35.0456   
+mp-2624     AlSb-zb  1.8297  1.8249         3.5226            76.9477   
+mp-1138      LiF-rs  1.1958  1.1124         4.0220            14.1032   
+mp-22922    AgCl-rs  1.7293  1.6132         0.0569             0.5319   
+mp-672       CdS-wz  1.2773  1.2289         4.3931            18.3964   
+mp-804       GaN-wz  1.2095  1.1765        45.4487           175.2985   
+mp-1986      ZnO-zb  0.5539  0.2872        37.9771            50.7147   
+mp-1000     BaTe-rs  1.8341  1.8097         0.4337             8.6830   
+mp-22916    NaBr-rs  0.7382  0.5408         1.7026             2.9646   
+mp-24093     CuH-wz  1.3546  0.9526         2.8107             7.9233   
+mp-661       AlN-wz  0.6199  0.5363       132.7418           230.0229   
+mp-1479       BP-zb  2.0000  2.0000            NaN           401.6100   
+mp-22899     LiI-rs  0.7021  0.4460         0.8833             1.3903   
+mp-11718     RbF-rs  0.5791  0.2782         2.3903             3.1626   
+no-mp-1     CuBr-wz  1.4824  1.3942         0.4097             2.2956   
+mp-2469      CdS-zb  1.2234  1.1753         5.1166            19.7011   
+mp-830       GaN-zb  1.0659  1.0024        52.4530           157.8693   
+mp-23259    LiBr-rs  1.4215  1.3662         0.3384             1.7976   
+mp-1342      BaO-rs  1.1672  1.0357         8.9379             2.8390   
+mp-1018100  AlSb-wz  1.8823  1.8802         1.7857            57.8370   
+mp-1778      BeO-zb  1.3616  1.3262        71.8354           354.6378   
+mp-2176     ZnTe-zb  1.8859  1.8849         0.5609            18.9364   
+mp-23251     KBr-rs  1.2220  1.2117         0.6227             2.5370   
+mp-22898      KI-rs  1.9351  1.9351         0.0231             1.4004   
+mp-984718    BAs-wz  2.0000  2.0000            NaN          1102.3824   
+mp-1007652  InAs-wz  1.9629  1.9614         0.1954            20.0551   
+mp-22925     AgI-zb  1.5316  1.5086         0.3052             2.1794   
+mp-1253     BaSe-rs  1.8382  1.8342         0.3812             8.8176   
+mp-22205     InN-wz  1.5450  1.5234        15.5724           115.1114   
+mp-1184046  CuCl-wz  1.3032  1.1724         0.3812             1.4615   
+mp-20012    InSb-zb  1.8890  1.8879         0.3802            13.1836   
+mp-23231    AgBr-rs  0.7026  0.3842         0.6498             0.4404   
+mp-21276     PbS-rs  1.0304  0.7858         0.5920             1.3583   
+mp-1039     MgTe-wz  1.7744  1.7627         0.8242            13.0666   
+mp-8881     AlAs-wz  1.7588  1.7458         5.0726            74.7596   
+mp-1550      AlP-zb  1.3061  1.2787        18.6585            84.8082   
+
+            imaginary_freqs errors  SRME_failed  
+mp_id                                            
+mp-2472               False     []        False  
+mp-2542               False     []        False  
+mp-8884               False     []        False  
+mp-1541               False     []        False  
+mp-23295              False     []        False  
+mp-23703              False     []        False  
+mp-1183441            False     []        False  
+mp-8883               False     []        False  
+mp-22913              False     []        False  
+mp-1265               False     []        False  
+mp-24721              False     []        False  
+mp-1008559             True     []         True  
+mp-406                False     []        False  
+mp-10695              False     []        False  
+mp-682                False     []        False  
+no-mp-4               False     []        False  
+mp-569346              True     []         True  
+mp-13033              False     []        False  
+mp-2172               False     []        False  
+mp-19717              False     []        False  
+mp-463                False     []        False  
+mp-8882               False     []        False  
+mp-966800             False     []        False  
+mp-1156               False     []        False  
+mp-22905              False     []        False  
+mp-1672               False     []        False  
+mp-8880               False     []        False  
+mp-10044               True     []         True  
+mp-20305              False     []        False  
+mp-2201               False     []        False  
+mp-23870              False     []        False  
+no-mp-3               False     []        False  
+mp-8062               False     []        False  
+mp-1190               False     []        False  
+mp-22903              False     []        False  
+mp-1500               False     []        False  
+mp-1007661            False     []        False  
+mp-422                False     []        False  
+mp-22895               True     []         True  
+mp-23193              False     []        False  
+mp-7631               False     []        False  
+mp-380                False     []        False  
+no-mp-2               False     []        False  
+mp-1700               False     []        False  
+mp-1784               False     []        False  
+mp-22862              False     []        False  
+mp-580941             False     []        False  
+mp-20411              False     []        False  
+mp-22914               True     []         True  
+mp-22867              False     []        False  
+mp-1070               False     []        False  
+mp-2653               False     []        False  
+mp-252                False     []        False  
+mp-2534               False     []        False  
+mp-24084              False     []        False  
+mp-1519               False     []        False  
+mp-1018059            False     []        False  
+mp-2691               False     []        False  
+mp-1639               False     []        False  
+mp-1415               False     []        False  
+mp-23268              False     []        False  
+mp-2133               False     []        False  
+mp-2490               False     []        False  
+mp-20351              False     []        False  
+mp-1132               False     []        False  
+mp-2605               False     []        False  
+mp-12779              False     []        False  
+mp-561286             False     []        False  
+mp-2624               False     []        False  
+mp-1138               False     []        False  
+mp-22922              False     []        False  
+mp-672                False     []        False  
+mp-804                False     []        False  
+mp-1986               False     []        False  
+mp-1000               False     []        False  
+mp-22916              False     []        False  
+mp-24093              False     []        False  
+mp-661                False     []        False  
+mp-1479                True     []         True  
+mp-22899              False     []        False  
+mp-11718              False     []        False  
+no-mp-1               False     []        False  
+mp-2469               False     []        False  
+mp-830                False     []        False  
+mp-23259              False     []        False  
+mp-1342               False     []        False  
+mp-1018100            False     []        False  
+mp-1778               False     []        False  
+mp-2176               False     []        False  
+mp-23251              False     []        False  
+mp-22898              False     []        False  
+mp-984718              True     []         True  
+mp-1007652            False     []        False  
+mp-22925              False     []        False  
+mp-1253               False     []        False  
+mp-22205              False     []        False  
+mp-1184046            False     []        False  
+mp-20012              False     []        False  
+mp-23231              False     []        False  
+mp-21276              False     []        False  
+mp-1039               False     []        False  
+mp-8881               False     []        False  
+mp-1550               False     []        False  
