@@ -1,6 +1,6 @@
 MODEL: MACE
-	mean SRME: 0.6641714522851989
-	mean SRE: 0.5114191257628206
+	mean SRME: 0.6641714522864077
+	mean SRE: 0.5114191257601942
                desc    SRME     SRE  kappa_TOT_ave  DFT_kappa_TOT_ave  \
 mp_id                                                                   
 mp-2472      SrO-rs  0.2120  0.1098         8.7710             9.7896   

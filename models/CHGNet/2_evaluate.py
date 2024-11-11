@@ -2,7 +2,7 @@ import os
 from glob import glob
 import pandas as pd
 
-from k_srme import glob2df, ID, DFT_NAC_REF
+from k_srme import glob2df, ID, DFT_NONAC_REF
 from k_srme.benchmark import get_metrics, process_benchmark_descriptors
 
 
@@ -14,7 +14,10 @@ in_file = "conductivity_*-???.json.gz"
 
 in_folder = f"2024-11-09-{model_name}-phononDB-LTC-FIRE_2SR_force0.0001_sym1e-05/"
 
-DFT_RESULTS_FILE = DFT_NAC_REF
+
+# Comparing with the DFT results without
+# non-analytical correction term (NAC)
+DFT_RESULTS_FILE = DFT_NONAC_REF
 
 
 module_dir = os.path.dirname(__file__)

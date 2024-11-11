@@ -8,7 +8,7 @@ from k_srme.benchmark import (
     get_metrics,
 )
 from k_srme.data import glob2df
-from k_srme.relax import two_stage_relax
+from k_srme.relax import two_stage_relax, NO_TILT_MASK
 
 # TODO: create separete phonopy_utils, such that code does not depend on phono3py
 
@@ -60,4 +60,5 @@ __all__ = [
     "log_message",
     "log_symmetry",
     "get_spacegroup_number",
+    "NO_TILT_MASK",
 ]
