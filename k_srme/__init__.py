@@ -17,8 +17,6 @@ from k_srme.utils import (
     aseatoms2str,
     str2aseatoms,
     log_message,
-    log_symmetry,
-    get_spacegroup_number,
 )
 
 PKG_NAME = "k-srme"

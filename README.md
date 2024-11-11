@@ -12,25 +12,23 @@ Then install in editable mode:
 pip install -e .
 ```
 
- Pre-requisites (need to be installed seperately or added to PYTHONPATH)
-- phono3py (see https://phonopy.github.io/phono3py/install.html for installation instructions)
 
-
-Installed automatically during pip install:
-- phonopy
-- ase
-- numpy
-- matplotlib
-- spglib
-- tqdm
-- h5py
-- pandas
-
+phonopy and phono3py dependencies are optional to allow model output analysis.
+ These pre-requisites need to be installed seperately or added to PYTHONPATH.
+See https://phonopy.github.io/phono3py/install.html for installation instructions of phono3py.
 
 
 
 # Usage
-The example scripts showcase a sample workflow for testing a MACE potential and comparing the thermal conductivity with DFT calculations for a collection of different materials. The scripts may be modified easily to use any foundation Machine Learning Interatomic Potentials. See k-srme/MLPS.py for calculator setup utilities.
+The example scripts showcase a sample workflow for testing a MACE potential and comparing the thermal conductivity with DFT calculations for a collection of different materials. The scripts may be modified easily to use any foundation Machine Learning Interatomic Potentials. 
+
+Example scripts are found in the `scripts` folder. Model results and scripts are found in the `models` folder. 
+
+To obtain conductivity results, you need to run a CPU job, as phono3py does not support GPUs. The `1_test_srme.py` script calculates the displaced force sets and the thermal conductivity for each material. We recommend setting OMP_NUM_THREADS to 4 to 8, to get speedup in both the forceand conductivity calculations. The script also supports job arrays outputting one file per array task, which are collected in the evaluation script. For the 103 materials, the wurtzite structures require the longest runtime. Therefore to minimize the runtime, we recommend a maximum of 33 array tasks.
+
+The `2_evaluate.py` script evaluates the predictions, collecting the array task files and printing the results both to the terminal and to a file. The `k_srme.json.gz` output file contain additional information about the model run, which can be read as a pandas DataFrame for further analysis.
+
+
 
 
 # How to cite
