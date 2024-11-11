@@ -12,7 +12,14 @@ from k_srme.relax import two_stage_relax
 
 # TODO: create separete phonopy_utils, such that code does not depend on phono3py
 
-from k_srme.utils import check_imaginary_freqs
+from k_srme.utils import (
+    check_imaginary_freqs,
+    aseatoms2str,
+    str2aseatoms,
+    log_message,
+    log_symmetry,
+    get_spacegroup_number,
+)
 
 PKG_NAME = "k-srme"
 __version__ = "1.0.0"
@@ -48,4 +55,9 @@ __all__ = [
     "glob2df",
     "two_stage_relax",
     "check_imaginary_freqs",
+    "aseatoms2str",
+    "str2aseatoms",
+    "log_message",
+    "log_symmetry",
+    "get_spacegroup_number",
 ]
