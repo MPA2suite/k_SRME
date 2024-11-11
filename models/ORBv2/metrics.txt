@@ -1,6 +1,6 @@
 MODEL: ORB-v2
-	mean SRME: 1.7318473864584747
-	mean SRE: 1.4857696848852868
+	mean SRME: 1.7318473864601938
+	mean SRE: 1.4857696848883495
                desc    SRME     SRE  kappa_TOT_ave  DFT_kappa_TOT_ave  \
 mp_id                                                                   
 mp-2472      SrO-rs  1.9994  1.9990   3.879807e+04             9.7896   

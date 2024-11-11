@@ -1,6 +1,6 @@
 MODEL: eqV2
-	mean SRME: 1.7707430752030748
-	mean SRE: 1.4826944300969531
+	mean SRME: 1.7707430752009712
+	mean SRE: 1.4826944300951455
                desc    SRME     SRE  kappa_TOT_ave  DFT_kappa_TOT_ave  \
 mp_id                                                                   
 mp-2472      SrO-rs  1.9989  1.9981     20864.6887             9.7896   
