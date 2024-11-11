@@ -9,24 +9,30 @@ from glob import glob
 
 from typing import Callable, Any
 
+
 class FileDownloadError(Exception):
     """Custom exception raised when a file cannot be downloaded."""
+
     pass
 
-DEFAULT_CACHE_DIR = os.getenv("K_SRME_CACHE_DIR", str(Path.home() / ".cache" / "autoWTE"))
+
+DEFAULT_CACHE_DIR = os.getenv(
+    "K_SRME_CACHE_DIR", str(Path.home() / ".cache" / "autoWTE")
+)
+
 
 def glob2df(
     file_pattern: str,
     data_loader: Callable[[Any], pd.DataFrame] = None,
     pbar: bool = True,
-    max_files = None,
+    max_files=None,
     **load_options: Any,
 ) -> pd.DataFrame:
     """Merge multiple data files matching a glob pattern into a single dataframe.
 
     Args:
         file_pattern (str): Glob pattern for file matching (e.g., '*.csv').
-        data_loader (Callable[[Any], pd.DataFrame], optional): Function for loading 
+        data_loader (Callable[[Any], pd.DataFrame], optional): Function for loading
             individual files. Defaults to pd.read_csv for CSVs, otherwise pd.read_json.
         show_progress (bool, optional): Show progress bar during file loading. Defaults to True.
         **load_options: Additional options passed to the data loader (like pd.read_csv or pd.read_json).
@@ -37,7 +43,7 @@ def glob2df(
     Raises:
         FileNotFoundError: If no files match the given glob pattern.
     """
-    
+
     # Choose the appropriate data loading function based on file extension if not provided
     if data_loader is None:
         if ".csv" in file_pattern.lower():
@@ -62,13 +68,16 @@ def glob2df(
 
     # Combine all loaded dataframes into one
     combined_df = pd.concat(dataframes, ignore_index=True)
-    
+
     return combined_df
+
 
 class Files:
     """A class to manage files with associated URLs and cache functionality."""
-    
-    def __init__(self, file_name: str, url: str = None, cache_dir: str = DEFAULT_CACHE_DIR):
+
+    def __init__(
+        self, file_name: str, url: str = None, cache_dir: str = DEFAULT_CACHE_DIR
+    ):
         """
         Initialize a file object with a name, optional download URL, and cache directory.
 
@@ -86,7 +95,9 @@ class Files:
         """Ensure the file exists locally, downloading if necessary."""
         if not os.path.isfile(self.file_path):
             if self.url is None:
-                raise FileDownloadError(f"No URL provided for {self.file_name}. Cannot download.")
+                raise FileDownloadError(
+                    f"No URL provided for {self.file_name}. Cannot download."
+                )
             self.download_file()
 
     def download_file(self):
@@ -97,7 +108,7 @@ class Files:
             response = requests.get(self.url, stream=True)
             response.raise_for_status()
 
-            with open(self.file_path, 'wb') as f:
+            with open(self.file_path, "wb") as f:
                 for chunk in tqdm(response.iter_content(chunk_size=8192)):
                     if chunk:
                         f.write(chunk)
@@ -109,7 +120,8 @@ class Files:
         self.ensure_exists()
         return self.file_path
 
+
 class DataFiles(Files):
     """A class specifically for data files with predefined URLs."""
-    a = "b"
 
+    a = "b"
