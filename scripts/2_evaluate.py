@@ -16,6 +16,7 @@ in_file = "conductivity_*-???.json.gz"
 
 in_folder = f"2024-11-09-{model_name}-phononDB-LTC-FIRE_2SR_force0.0001_sym1e-05/"
 
+# We compare against the DFT results with NAC
 DFT_RESULTS_FILE = DFT_NAC_REF 
 
 

@@ -25,9 +25,9 @@ pkg_is_editable = True
 TEMPERATURES = [300]
 ID = "mp_id"
 
-from .benchmark import *
-from .data import glob2df
+from k_srme.benchmark import *
+from k_srme.data import glob2df
 
 # TODO: remove these such that code is not dependent on phono3py
-from .utils import *
-from .relax import *
+from k_srme.utils import *
+from k_srme.relax import *

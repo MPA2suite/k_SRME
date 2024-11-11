@@ -16,10 +16,10 @@ from tqdm import tqdm
 
 from phono3py.api_phono3py import Phono3py
 
-from .utils import aseatoms2phono3py, log_message, get_chemical_formula, FREQUENCY_THRESHOLD, MODE_KAPPA_THRESHOLD
-from .benchmark import calculate_mode_kappa_TOT
+from k_srme.utils import aseatoms2phono3py, log_message, get_chemical_formula, FREQUENCY_THRESHOLD, MODE_KAPPA_THRESHOLD
+from k_srme.benchmark import calculate_mode_kappa_TOT
 
-from . import TEMPERATURES
+from k_srme import TEMPERATURES
 
 
 KAPPA_OUTPUT_NAME_MAP = {

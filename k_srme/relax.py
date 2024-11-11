@@ -13,7 +13,7 @@ from ase.filters import UnitCellFilter, ExpCellFilter, StrainFilter,FrechetCellF
 from ase.optimize import BFGS, FIRE, MDMin, GPMin
 from ase.spacegroup import get_spacegroup
 
-from .utils import *
+from k_srme.utils import *
 
 
 from pathlib import Path

@@ -1,8 +1,6 @@
 import numpy as np
 import pandas as pd
 
-#from .utils import check_imaginary_freqs
-
 import warnings
 import traceback
 
@@ -46,6 +44,7 @@ def process_benchmark_descriptors(
     # turn temperature list to the first temperature (300K) TODO: allow multiple temperatures to be tested
     df_mlp_filtered["SRD"] = df_mlp_filtered["SRD"].apply(lambda x : x[0] if not isinstance(x,float) else x)
 
+    # We substitute NaN values with 0 predicted conductivity, yielding -2 for SRD
     df_mlp_filtered["SRD"] = df_mlp_filtered["SRD"].fillna(-2)
 
     df_mlp_filtered["SRE"] = df_mlp_filtered["SRD"].abs()
