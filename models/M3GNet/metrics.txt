@@ -1,6 +1,6 @@
 MODEL: M3GNet
-	mean SRME: 1.4071813798403001
-	mean SRE: 1.333727711521498
+	mean SRME: 1.4071813798417474
+	mean SRE: 1.3337277115242718
                desc    SRME     SRE  kappa_TOT_ave  DFT_kappa_TOT_ave  \
 mp_id                                                                   
 mp-2472      SrO-rs  0.3884  0.2126         7.9082             9.7896   

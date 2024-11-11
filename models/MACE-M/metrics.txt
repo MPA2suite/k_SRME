@@ -1,6 +1,6 @@
 MODEL: MACE
-	mean SRME: 0.687944196911842
-	mean SRE: 0.4594735490288365
+	mean SRME: 0.6879441969116504
+	mean SRE: 0.4594735490242718
                desc    SRME     SRE  kappa_TOT_ave  DFT_kappa_TOT_ave  \
 mp_id                                                                   
 mp-2472      SrO-rs  0.3275  0.1633        11.5308             9.7896   
@@ -10,7 +10,7 @@ mp-1541     BeSe-zb  0.9199  0.8238        40.1581            96.4087
 mp-23295    RbCl-rs  0.6419  0.6096         1.0556             1.9812   
 mp-23703     LiH-rs  1.9116  1.9116         0.4831            21.3691   
 mp-1183441  BeTe-wz  0.4938  0.0272        65.8951            64.1250   
-mp-8883         NaN  2.0000  2.0000            NaN            28.7777   
+mp-8883        None  2.0000  2.0000            NaN            28.7777   
 mp-22913    CuBr-zb  0.5057  0.1000         2.4969             2.7596   
 mp-1265      MgO-rs  0.4941  0.4540        29.9818            47.5887   
 mp-24721     RbH-rs  0.7121  0.5211         2.5091             4.2772   
@@ -28,7 +28,7 @@ mp-8882      GaP-wz  0.7254  0.0712        90.1476            96.8006
 mp-966800    InP-wz  0.6336  0.1001        67.3693            74.4684   
 mp-1156     GaSb-zb  0.7195  0.4766        20.6798            33.6205   
 mp-22905    LiCl-rs  0.5080  0.4122         5.4989             3.6197   
-mp-1672         NaN  2.0000  2.0000            NaN            26.9473   
+mp-1672        None  2.0000  2.0000            NaN            26.9473   
 mp-8880      AlP-wz  1.0638  1.0449        24.2957            77.4521   
 mp-10044     BAs-zb  1.2690  1.1207       354.1297          1256.8155   
 mp-20305    InAs-zb  0.5350  0.3368        15.1834            21.3320   
@@ -67,7 +67,7 @@ mp-23268     NaI-rs  0.4244  0.0440         1.5614             1.6315
 mp-2133      ZnO-wz  0.2863  0.2058        39.9210            49.0794   
 mp-2490      GaP-zb  0.9282  0.3335       124.0143            88.5674   
 mp-20351     InP-zb  0.8209  0.2852       105.6064            79.2487   
-mp-1132         NaN  2.0000  2.0000            NaN             7.9633   
+mp-1132        None  2.0000  2.0000            NaN             7.9633   
 mp-2605      CaO-rs  0.2839  0.1114        21.0226            23.5026   
 mp-12779    CdTe-wz  0.6655  0.4101         3.6638             5.5542   
 mp-561286    ZnS-wz  0.4338  0.0840        32.2201            35.0456   
@@ -107,108 +107,108 @@ mp-1039     MgTe-wz  0.7957  0.6604        25.9503            13.0666
 mp-8881     AlAs-wz  0.6649  0.1956        61.4416            74.7596   
 mp-1550      AlP-zb  1.0218  1.0058        28.0503            84.8082   
 
-           imaginary_freqs errors  SRME_failed  
-mp_id                                           
-mp-2472              False     []        False  
-mp-2542              False     []        False  
-mp-8884              False     []        False  
-mp-1541              False     []        False  
-mp-23295             False     []        False  
-mp-23703             False     []        False  
-mp-1183441           False     []        False  
-mp-8883                NaN    NaN         True  
-mp-22913             False     []        False  
-mp-1265              False     []        False  
-mp-24721             False     []        False  
-mp-1008559           False     []        False  
-mp-406               False     []        False  
-mp-10695             False     []        False  
-mp-682               False     []        False  
-no-mp-4              False     []        False  
-mp-569346            False     []        False  
-mp-13033             False     []        False  
-mp-2172              False     []        False  
-mp-19717             False     []        False  
-mp-463               False     []        False  
-mp-8882              False     []        False  
-mp-966800            False     []        False  
-mp-1156              False     []        False  
-mp-22905             False     []        False  
-mp-1672                NaN    NaN         True  
-mp-8880              False     []        False  
-mp-10044             False     []        False  
-mp-20305             False     []        False  
-mp-2201              False     []        False  
-mp-23870             False     []        False  
-no-mp-3              False     []        False  
-mp-8062              False     []        False  
-mp-1190              False     []        False  
-mp-22903             False     []        False  
-mp-1500              False     []        False  
-mp-1007661           False     []        False  
-mp-422               False     []        False  
-mp-22895             False     []        False  
-mp-23193             False     []        False  
-mp-7631              False     []        False  
-mp-380               False     []        False  
-no-mp-2              False     []        False  
-mp-1700              False     []        False  
-mp-1784              False     []        False  
-mp-22862             False     []        False  
-mp-580941            False     []        False  
-mp-20411             False     []        False  
-mp-22914             False     []        False  
-mp-22867             False     []        False  
-mp-1070              False     []        False  
-mp-2653              False     []        False  
-mp-252               False     []        False  
-mp-2534              False     []        False  
-mp-24084             False     []        False  
-mp-1519              False     []        False  
-mp-1018059           False     []        False  
-mp-2691              False     []        False  
-mp-1639              False     []        False  
-mp-1415              False     []        False  
-mp-23268             False     []        False  
-mp-2133              False     []        False  
-mp-2490              False     []        False  
-mp-20351             False     []        False  
-mp-1132                NaN    NaN         True  
-mp-2605              False     []        False  
-mp-12779             False     []        False  
-mp-561286            False     []        False  
-mp-2624              False     []        False  
-mp-1138              False     []        False  
-mp-22922             False     []        False  
-mp-672               False     []        False  
-mp-804               False     []        False  
-mp-1986              False     []        False  
-mp-1000              False     []        False  
-mp-22916             False     []        False  
-mp-24093             False     []        False  
-mp-661               False     []        False  
-mp-1479              False     []        False  
-mp-22899             False     []        False  
-mp-11718             False     []        False  
-no-mp-1              False     []        False  
-mp-2469              False     []        False  
-mp-830               False     []        False  
-mp-23259             False     []        False  
-mp-1342              False     []        False  
-mp-1018100           False     []        False  
-mp-1778              False     []        False  
-mp-2176              False     []        False  
-mp-23251             False     []        False  
-mp-22898             False     []        False  
-mp-984718            False     []        False  
-mp-1007652           False     []        False  
-mp-22925             False     []        False  
-mp-1253              False     []        False  
-mp-22205             False     []        False  
-mp-1184046           False     []        False  
-mp-20012             False     []        False  
-mp-23231             False     []        False  
-mp-21276             False     []        False  
-mp-1039              False     []        False  
-mp-8881              False     []        False  
-mp-1550              False     []        False  
+            imaginary_freqs errors  SRME_failed  
+mp_id                                            
+mp-2472                 0.0     []        False  
+mp-2542                 0.0     []        False  
+mp-8884                 0.0     []        False  
+mp-1541                 0.0     []        False  
+mp-23295                0.0     []        False  
+mp-23703                0.0     []        False  
+mp-1183441              0.0     []        False  
+mp-8883                 NaN   None         True  
+mp-22913                0.0     []        False  
+mp-1265                 0.0     []        False  
+mp-24721                0.0     []        False  
+mp-1008559              0.0     []        False  
+mp-406                  0.0     []        False  
+mp-10695                0.0     []        False  
+mp-682                  0.0     []        False  
+no-mp-4                 0.0     []        False  
+mp-569346               0.0     []        False  
+mp-13033                0.0     []        False  
+mp-2172                 0.0     []        False  
+mp-19717                0.0     []        False  
+mp-463                  0.0     []        False  
+mp-8882                 0.0     []        False  
+mp-966800               0.0     []        False  
+mp-1156                 0.0     []        False  
+mp-22905                0.0     []        False  
+mp-1672                 NaN   None         True  
+mp-8880                 0.0     []        False  
+mp-10044                0.0     []        False  
+mp-20305                0.0     []        False  
+mp-2201                 0.0     []        False  
+mp-23870                0.0     []        False  
+no-mp-3                 0.0     []        False  
+mp-8062                 0.0     []        False  
+mp-1190                 0.0     []        False  
+mp-22903                0.0     []        False  
+mp-1500                 0.0     []        False  
+mp-1007661              0.0     []        False  
+mp-422                  0.0     []        False  
+mp-22895                0.0     []        False  
+mp-23193                0.0     []        False  
+mp-7631                 0.0     []        False  
+mp-380                  0.0     []        False  
+no-mp-2                 0.0     []        False  
+mp-1700                 0.0     []        False  
+mp-1784                 0.0     []        False  
+mp-22862                0.0     []        False  
+mp-580941               0.0     []        False  
+mp-20411                0.0     []        False  
+mp-22914                0.0     []        False  
+mp-22867                0.0     []        False  
+mp-1070                 0.0     []        False  
+mp-2653                 0.0     []        False  
+mp-252                  0.0     []        False  
+mp-2534                 0.0     []        False  
+mp-24084                0.0     []        False  
+mp-1519                 0.0     []        False  
+mp-1018059              0.0     []        False  
+mp-2691                 0.0     []        False  
+mp-1639                 0.0     []        False  
+mp-1415                 0.0     []        False  
+mp-23268                0.0     []        False  
+mp-2133                 0.0     []        False  
+mp-2490                 0.0     []        False  
+mp-20351                0.0     []        False  
+mp-1132                 NaN   None         True  
+mp-2605                 0.0     []        False  
+mp-12779                0.0     []        False  
+mp-561286               0.0     []        False  
+mp-2624                 0.0     []        False  
+mp-1138                 0.0     []        False  
+mp-22922                0.0     []        False  
+mp-672                  0.0     []        False  
+mp-804                  0.0     []        False  
+mp-1986                 0.0     []        False  
+mp-1000                 0.0     []        False  
+mp-22916                0.0     []        False  
+mp-24093                0.0     []        False  
+mp-661                  0.0     []        False  
+mp-1479                 0.0     []        False  
+mp-22899                0.0     []        False  
+mp-11718                0.0     []        False  
+no-mp-1                 0.0     []        False  
+mp-2469                 0.0     []        False  
+mp-830                  0.0     []        False  
+mp-23259                0.0     []        False  
+mp-1342                 0.0     []        False  
+mp-1018100              0.0     []        False  
+mp-1778                 0.0     []        False  
+mp-2176                 0.0     []        False  
+mp-23251                0.0     []        False  
+mp-22898                0.0     []        False  
+mp-984718               0.0     []        False  
+mp-1007652              0.0     []        False  
+mp-22925                0.0     []        False  
+mp-1253                 0.0     []        False  
+mp-22205                0.0     []        False  
+mp-1184046              0.0     []        False  
+mp-20012                0.0     []        False  
+mp-23231                0.0     []        False  
+mp-21276                0.0     []        False  
+mp-1039                 0.0     []        False  
+mp-8881                 0.0     []        False  
+mp-1550                 0.0     []        False  

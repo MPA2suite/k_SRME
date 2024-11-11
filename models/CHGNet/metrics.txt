@@ -1,6 +1,6 @@
 MODEL: CHGNet
-	mean SRME: 1.716990920478107
-	mean SRE: 1.6943732878453288
+	mean SRME: 1.7169909204805829
+	mean SRE: 1.6943732878504856
                desc    SRME     SRE  kappa_TOT_ave  DFT_kappa_TOT_ave  \
 mp_id                                                                   
 mp-2472      SrO-rs  0.7929  0.7366         4.5195             9.7896   
