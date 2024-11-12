@@ -1,31 +1,22 @@
+import warnings
+from copy import deepcopy
 from pathlib import Path
-
-from numpy.typing import ArrayLike
 from typing import Tuple
 
-from copy import deepcopy
-import warnings
-
-
+import numpy as np
 from ase import Atoms
 from ase.calculators.calculator import Calculator
-import numpy as np
+from numpy.typing import ArrayLike
+from phono3py.api_phono3py import Phono3py
 from tqdm import tqdm
 
-
-from phono3py.api_phono3py import Phono3py
-
-from k_srme.utils import (
-    log_message,
-    MODE_KAPPA_THRESHOLD,
-)
-
-from k_srme.phono3py_utils import get_chemical_formula, aseatoms2phono3py
-
-from k_srme.benchmark import calculate_mode_kappa_TOT
-
 from k_srme import TEMPERATURES
-
+from k_srme.benchmark import calculate_mode_kappa_TOT
+from k_srme.phono3py_utils import aseatoms2phono3py, get_chemical_formula
+from k_srme.utils import (
+    MODE_KAPPA_THRESHOLD,
+    log_message,
+)
 
 KAPPA_OUTPUT_NAME_MAP = {
     "weights": "grid_weights",
@@ -122,19 +113,20 @@ def init_phono3py(
     elif log is not None:
         log_level = 1
 
-    if "fc2_supercell" not in atoms.info.keys():
+    formula = atoms.get_chemical_formula(mode="metal")
+    if "fc2_supercell" not in atoms.info:
         raise ValueError(
-            f'{atoms.get_chemical_formula(mode="metal")} "fc2_supercell" was not found in atoms.info when calculating force sets.'
+            f'{formula} "fc2_supercell" was not found in atoms.info when calculating force sets.'
         )
 
-    if "fc3_supercell" not in atoms.info.keys():
+    if "fc3_supercell" not in atoms.info:
         raise ValueError(
-            f'{atoms.get_chemical_formula(mode="metal")} "fc3_supercell" was not found in atoms.info when calculating force sets.'
+            f'{formula} "fc3_supercell" was not found in atoms.info when calculating force sets.'
         )
 
-    if "fc3_supercell" not in atoms.info.keys():
+    if "fc3_supercell" not in atoms.info:
         raise ValueError(
-            f'{atoms.get_chemical_formula(mode="metal")} "q_mesh" was not found in atoms.info when calculating force sets.'
+            f'{formula} "q_mesh" was not found in atoms.info when calculating force sets.'
         )
 
     # Initialise Phono3py object

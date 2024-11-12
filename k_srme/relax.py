@@ -1,19 +1,16 @@
-import warnings
 import os
+import warnings
+from pathlib import Path
 from typing import Type
 
-from ase.calculators.calculator import Calculator
 import ase
-
+from ase.calculators.calculator import Calculator
 from ase.constraints import FixSymmetry
 from ase.filters import FrechetCellFilter
 from ase.optimize import BFGS
 from ase.spacegroup import get_spacegroup
 
 from k_srme.utils import log_message, log_symmetry
-
-
-from pathlib import Path
 
 NO_TILT_MASK = [True, True, True, False, False, False]
 
@@ -61,7 +58,7 @@ def two_stage_relax(
     else:
         ase_logfile = log
 
-    if "name" in atoms.info.keys():
+    if "name" in atoms.info:
         mat_name = atoms.info["name"]
     else:
         mat_name = f'{atoms.get_chemical_formula(mode="metal",empirical=True)}-{get_spacegroup(atoms,symprec=symprec).no}'

@@ -1,11 +1,10 @@
+import traceback
+import warnings
+
 import numpy as np
 import pandas as pd
 
-import warnings
-import traceback
-
-
-DFEAULT_LIST2NP_COLS = [
+DEFAULT_LIST2NP_COLS = [
     "max_stress",
     "kappa_TOT_RTA",
     "kappa_P_RTA",
@@ -27,35 +26,29 @@ def process_benchmark_descriptors(
     df_mlp_filtered,
     df_dft_results,
 ):
-    # df_mlp_filtered = df_mlp_filtered.map(lambda x: np.array(x) if isinstance(x, list) else x)
-    # df_dft_results = df_dft_results.map(lambda x: np.array(x) if isinstance(x, list) else x)
+    # df_mlp_filtered = df_mlp_filtered.map(np.asarray)
+    # df_dft_results = df_dft_results.map(np.asarray)
 
-    mlp_list2np_cols = [
-        col for col in DFEAULT_LIST2NP_COLS if col in df_mlp_filtered.keys()
-    ]
+    mlp_list2np_cols = [col for col in DEFAULT_LIST2NP_COLS if col in df_mlp_filtered]
     df_mlp_filtered[mlp_list2np_cols] = df_mlp_filtered[mlp_list2np_cols].map(
-        lambda x: np.array(x)
+        np.asarray
     )
 
-    dft_list2np_cols = [
-        col for col in DFEAULT_LIST2NP_COLS if col in df_dft_results.keys()
-    ]
-    df_dft_results[dft_list2np_cols] = df_dft_results[dft_list2np_cols].map(
-        lambda x: np.array(x)
-    )
+    dft_list2np_cols = [col for col in DEFAULT_LIST2NP_COLS if col in df_dft_results]
+    df_dft_results[dft_list2np_cols] = df_dft_results[dft_list2np_cols].map(np.asarray)
 
     # Remove precomputed columns
     columns_to_remove = ["SRD", "SRE", "SRME", "DFT_kappa_TOT_ave"]
-    if any([col in df_mlp_filtered.keys() for col in columns_to_remove]):
+    if any([col in df_mlp_filtered for col in columns_to_remove]):
         df_mlp_filtered = df_mlp_filtered.drop(
             columns=[col for col in columns_to_remove if col in df_mlp_filtered.columns]
         )
 
-    if "kappa_TOT_ave" not in df_mlp_filtered.keys():
+    if "kappa_TOT_ave" not in df_mlp_filtered:
         df_mlp_filtered["kappa_TOT_ave"] = df_mlp_filtered["kappa_TOT_RTA"].apply(
             calculate_kappa_ave
         )
-    if "mode_kappa_TOT_ave" not in df_mlp_filtered.keys():
+    if "mode_kappa_TOT_ave" not in df_mlp_filtered:
         df_mlp_filtered["mode_kappa_TOT_ave"] = df_mlp_filtered["mode_kappa_TOT"].apply(
             calculate_kappa_ave
         )
@@ -82,7 +75,7 @@ def process_benchmark_descriptors(
 
     columns_to_remove = ["mode_kappa_TOT"]
     df_mlp_filtered = df_mlp_filtered.drop(
-        columns=[col for col in columns_to_remove if col in df_mlp_filtered.keys()]
+        columns=[col for col in columns_to_remove if col in df_mlp_filtered]
     )
 
     # TODO: Add column reason for SRME = 2
@@ -103,7 +96,7 @@ def get_metrics(df_mlp_filtered):
 
 
 def calculate_kappa_ave(kappa):
-    if np.any((pd.isna(kappa))):
+    if np.any(pd.isna(kappa)):
         return np.nan
     else:
         _kappa = np.asarray(kappa)
@@ -141,19 +134,19 @@ def calculate_SRME_dataframes(df_mlp, df_dft):
     for idx, row_mlp in df_mlp.iterrows():
         row_dft = df_dft.loc[idx]
         try:
-            if "imaginary_freqs" in row_mlp.keys() and row_mlp["imaginary_freqs"]:
+            if "imaginary_freqs" in row_mlp and row_mlp["imaginary_freqs"]:
                 if row_mlp["imaginary_freqs"] in ["True", True]:
                     srme_list.append(2)
                     continue
-            if "relaxed_space_group_number" in row_mlp.keys():
-                if "initial_space_group_number" in row_mlp.keys():
+            if "relaxed_space_group_number" in row_mlp:
+                if "initial_space_group_number" in row_mlp:
                     if (
                         row_mlp["relaxed_space_group_number"]
                         != row_mlp["initial_space_group_number"]
                     ):
                         srme_list.append(2)
                         continue
-                elif "symm.no" in row_dft.keys():
+                elif "symm.no" in row_dft:
                     if row_mlp["relaxed_space_group_number"] != row_dft["symm.no"]:
                         srme_list.append(2)
                         continue
@@ -179,8 +172,8 @@ def calculate_SRME(kappas_mlp, kappas_dft):
     if np.any(pd.isna(kappas_dft["kappa_TOT_ave"])):
         return [2]  # np.nan
 
-    if "mode_kappa_TOT_ave" not in kappas_mlp.keys():
-        if "mode_kappa_TOT" in kappas_mlp.keys():
+    if "mode_kappa_TOT_ave" not in kappas_mlp:
+        if "mode_kappa_TOT" in kappas_mlp:
             mlp_mode_kappa_TOT_ave = calculate_kappa_ave(kappas_mlp["mode_kappa_TOT"])
         else:
             mlp_mode_kappa_TOT_ave = calculate_kappa_ave(
@@ -189,8 +182,8 @@ def calculate_SRME(kappas_mlp, kappas_dft):
     else:
         mlp_mode_kappa_TOT_ave = np.asarray(kappas_mlp["mode_kappa_TOT_ave"])
 
-    if "mode_kappa_TOT_ave" not in kappas_dft.keys():
-        if "mode_kappa_TOT" in kappas_dft.keys():
+    if "mode_kappa_TOT_ave" not in kappas_dft:
+        if "mode_kappa_TOT" in kappas_dft:
             dft_mode_kappa_TOT_ave = calculate_kappa_ave(kappas_dft["mode_kappa_TOT"])
         else:
             dft_mode_kappa_TOT_ave = calculate_kappa_ave(
