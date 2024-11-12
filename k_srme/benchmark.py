@@ -1,8 +1,10 @@
 import traceback
 import warnings
+from typing import Any
 
 import numpy as np
 import pandas as pd
+
 
 DEFAULT_LIST2NP_COLS = [
     "max_stress",
@@ -18,14 +20,14 @@ DEFAULT_LIST2NP_COLS = [
 ]
 
 
-def fill_na_in_list(lst, y):
+def fill_na_in_list(lst: list, y: Any) -> np.ndarray:
     return np.asarray([y if pd.isna(x) else x for x in lst])
 
 
 def process_benchmark_descriptors(
-    df_mlp_filtered,
-    df_dft_results,
-):
+    df_mlp_filtered: pd.DataFrame,
+    df_dft_results: pd.DataFrame,
+) -> pd.DataFrame:
     # df_mlp_filtered = df_mlp_filtered.map(np.asarray)
     # df_dft_results = df_dft_results.map(np.asarray)
 
@@ -85,7 +87,7 @@ def process_benchmark_descriptors(
     return df_mlp_filtered
 
 
-def get_metrics(df_mlp_filtered):
+def get_metrics(df_mlp_filtered: pd.DataFrame) -> tuple[float, float, float, float]:
     mSRE = df_mlp_filtered["SRE"].mean()
     rmseSRE = ((df_mlp_filtered["SRE"] - mSRE) ** 2).mean() ** 0.5
 
@@ -95,11 +97,10 @@ def get_metrics(df_mlp_filtered):
     return mSRE, mSRME, rmseSRE, rmseSRME
 
 
-def calculate_kappa_ave(kappa):
+def calculate_kappa_ave(kappa: np.ndarray) -> float | np.ndarray:
     if np.any(pd.isna(kappa)):
         return np.nan
-    else:
-        _kappa = np.asarray(kappa)
+    _kappa = np.asarray(kappa)
 
     try:
         kappa_ave = _kappa[..., :3].mean(axis=-1)
@@ -111,7 +112,9 @@ def calculate_kappa_ave(kappa):
     return kappa_ave
 
 
-def calculate_mode_kappa_TOT(mode_kappa_P_RTA, mode_kappa_C, heat_capacity):
+def calculate_mode_kappa_TOT(
+    mode_kappa_P_RTA: np.ndarray, mode_kappa_C: np.ndarray, heat_capacity: np.ndarray
+) -> np.ndarray:
     with warnings.catch_warnings():
         warnings.simplefilter("ignore", RuntimeWarning)
         mode_kappa_C_per_mode = 2 * (
@@ -129,12 +132,14 @@ def calculate_mode_kappa_TOT(mode_kappa_P_RTA, mode_kappa_C, heat_capacity):
     return mode_kappa_TOT
 
 
-def calculate_SRME_dataframes(df_mlp, df_dft):
+def calculate_SRME_dataframes(
+    df_mlp: pd.DataFrame, df_dft: pd.DataFrame
+) -> list[float]:
     srme_list = []
     for idx, row_mlp in df_mlp.iterrows():
         row_dft = df_dft.loc[idx]
         try:
-            if "imaginary_freqs" in row_mlp and row_mlp["imaginary_freqs"]:
+            if row_mlp.get("imaginary_freqs"):
                 if row_mlp["imaginary_freqs"] in ["True", True]:
                     srme_list.append(2)
                     continue
@@ -162,7 +167,7 @@ def calculate_SRME_dataframes(df_mlp, df_dft):
     return srme_list
 
 
-def calculate_SRME(kappas_mlp, kappas_dft):
+def calculate_SRME(kappas_mlp: pd.Series, kappas_dft: pd.Series) -> list[float]:
     if np.all(pd.isna(kappas_mlp["kappa_TOT_ave"])):
         return [2]
     if np.any(pd.isna(kappas_mlp["kappa_TOT_RTA"])):
@@ -195,9 +200,7 @@ def calculate_SRME(kappas_mlp, kappas_dft):
     # calculating microscopic error for all temperatures
     microscopic_error = (
         np.abs(
-            (
-                mlp_mode_kappa_TOT_ave - dft_mode_kappa_TOT_ave  # reduce ndim by 1
-            )
+            mlp_mode_kappa_TOT_ave - dft_mode_kappa_TOT_ave  # reduce ndim by 1
         ).sum(axis=tuple(range(1, mlp_mode_kappa_TOT_ave.ndim)))  # summing axes
         / kappas_mlp["weights"].sum()
     )

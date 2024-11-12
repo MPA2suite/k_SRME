@@ -1,19 +1,16 @@
 import os
-import requests
+from collections.abc import Callable
+from glob import glob
 from pathlib import Path
-from tqdm import tqdm
-
+from typing import Any
 
 import pandas as pd
-from glob import glob
-
-from typing import Callable, Any
+import requests
+from tqdm import tqdm
 
 
 class FileDownloadError(Exception):
     """Custom exception raised when a file cannot be downloaded."""
-
-    pass
 
 
 DEFAULT_CACHE_DIR = os.getenv(
@@ -43,7 +40,6 @@ def glob2df(
     Raises:
         FileNotFoundError: If no files match the given glob pattern.
     """
-
     # Choose the appropriate data loading function based on file extension if not provided
     if data_loader is None:
         if ".csv" in file_pattern.lower():
@@ -57,7 +53,7 @@ def glob2df(
         raise FileNotFoundError(f"No files matched the pattern: {file_pattern}")
 
     if max_files is not None:
-        max_index = max_files if max_files < len(matched_files) else len(matched_files)
+        max_index = min(len(matched_files), max_files)
         matched_files = matched_files[:max_index]
 
     # Load data from each file into a dataframe
@@ -78,8 +74,7 @@ class Files:
     def __init__(
         self, file_name: str, url: str = None, cache_dir: str = DEFAULT_CACHE_DIR
     ):
-        """
-        Initialize a file object with a name, optional download URL, and cache directory.
+        """Initialize a file object with a name, optional download URL, and cache directory.
 
         Args:
             file_name (str): Name of the file.

@@ -1,22 +1,19 @@
 import warnings
 from copy import deepcopy
 from pathlib import Path
-from typing import Tuple
+from typing import Any
 
 import numpy as np
 from ase import Atoms
 from ase.calculators.calculator import Calculator
-from numpy.typing import ArrayLike
 from phono3py.api_phono3py import Phono3py
 from tqdm import tqdm
 
 from k_srme import TEMPERATURES
 from k_srme.benchmark import calculate_mode_kappa_TOT
 from k_srme.phono3py_utils import aseatoms2phono3py, get_chemical_formula
-from k_srme.utils import (
-    MODE_KAPPA_THRESHOLD,
-    log_message,
-)
+from k_srme.utils import MODE_KAPPA_THRESHOLD, log_message
+
 
 KAPPA_OUTPUT_NAME_MAP = {
     "weights": "grid_weights",
@@ -35,7 +32,12 @@ CONDUCTIVITY_SIGMAS_LIST = [
 ]
 
 
-def calculate_fc2_set(ph3, calculator, log=True, pbar_kwargs={}):
+def calculate_fc2_set(
+    ph3: Phono3py,
+    calculator: Calculator,
+    log: bool = True,
+    pbar_kwargs: dict[str, Any] = {},
+) -> np.ndarray:
     # calculate FC2 force set
 
     log_message(f"Computing FC2 force set in {get_chemical_formula(ph3)}.", output=log)
@@ -62,7 +64,12 @@ def calculate_fc2_set(ph3, calculator, log=True, pbar_kwargs={}):
     return force_set
 
 
-def calculate_fc3_set(ph3, calculator, log=True, pbar_kwargs={}):
+def calculate_fc3_set(
+    ph3: Phono3py,
+    calculator: Calculator,
+    log: bool = True,
+    pbar_kwargs: dict[str, Any] = {},
+) -> np.ndarray:
     # calculate FC3 force set
 
     log_message(f"Computing FC3 force set in {get_chemical_formula(ph3)}.", output=log)
@@ -94,8 +101,8 @@ def init_phono3py(
     log: str | Path | bool = True,
     symprec: float = 1e-5,
     displacement_distance: float = 0.03,
-    **kwargs,
-) -> Tuple[Phono3py, list, list]:
+    **kwargs: Any,
+) -> tuple[Phono3py, list[Any], list[Any]]:
     """Calculate fc2 and fc3 force lists from phono3py.
 
     Args:
@@ -107,7 +114,6 @@ def init_phono3py(
     Returns:
 
     """
-
     if not log:
         log_level = 0
     elif log is not None:
@@ -151,8 +157,8 @@ def get_fc2_and_freqs(
     ph3: Phono3py,
     calculator: Calculator | None = None,
     log: str | Path | bool = True,
-    pbar_kwargs: dict = {"leave": False},
-):
+    pbar_kwargs: dict[str, Any] = {"leave": False},
+) -> tuple[Phono3py, np.ndarray, np.ndarray]:
     if ph3.mesh_numbers is None:
         raise ValueError(
             '"mesh_number" was not found in phono3py object and was not provided as an argument when calculating phonons from phono3py object.'
@@ -178,8 +184,8 @@ def get_fc3(
     ph3: Phono3py,
     calculator: Calculator | None = None,
     log: str | Path | bool = True,
-    pbar_kwargs: dict = {"leave": False},
-):
+    pbar_kwargs: dict[str, Any] = {"leave": False},
+) -> tuple[Phono3py, np.ndarray]:
     if calculator is None:
         raise ValueError(
             f'{get_chemical_formula(ph3)} "calculator" was provided when calculating fc3 force sets.'
@@ -193,9 +199,7 @@ def get_fc3(
 
 
 def load_force_sets(
-    ph3: Phono3py,
-    fc2_set: ArrayLike,
-    fc3_set: ArrayLike,
+    ph3: Phono3py, fc2_set: np.ndarray, fc3_set: np.ndarray
 ) -> Phono3py:
     ph3.phonon_forces = fc2_set
     ph3.forces = fc3_set
@@ -207,10 +211,10 @@ def load_force_sets(
 
 def calculate_conductivity(
     ph3: Phono3py,
-    temperatures: ArrayLike = TEMPERATURES,
+    temperatures: np.ndarray = TEMPERATURES,
     log: str | Path | bool | None = None,
-    **kwargs,
-) -> Phono3py:
+    **kwargs: Any,
+) -> tuple[Phono3py, dict[str, np.ndarray]]:
     if not log:
         ph3._log_level = 0
     elif log is not None:
