@@ -263,6 +263,7 @@ for atoms in tqdm_bar:
 
         if not ltc_condition:
             kappa_results[mat_id] = info_dict | relax_dict | freqs_dict
+            warnings.warn(f"Material {mat_desc}, {mat_id} has imaginary frequencies.")
             continue
 
     except Exception as exc:
