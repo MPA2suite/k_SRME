@@ -1,10 +1,9 @@
-import warnings
 import os
-from typing import Type
+import warnings
+from pathlib import Path
 
-from ase.calculators.calculator import Calculator
 import ase
-
+from ase.calculators.calculator import Calculator
 from ase.constraints import FixSymmetry
 from ase.filters import FrechetCellFilter
 from ase.optimize import BFGS
@@ -12,8 +11,6 @@ from ase.spacegroup import get_spacegroup
 
 from k_srme.utils import log_message, log_symmetry
 
-
-from pathlib import Path
 
 NO_TILT_MASK = [True, True, True, False, False, False]
 
@@ -30,8 +27,8 @@ def two_stage_relax(
     enforce_symmetry: bool = True,
     symprec: float = 1e-5,
     allow_tilt: bool = False,
-    Optimizer: Type[ase.optimize.optimize.Optimizer] = BFGS,
-    Filter: Type[ase.filters.Filter] = FrechetCellFilter,
+    Optimizer: type[ase.optimize.optimize.Optimizer] = BFGS,
+    Filter: type[ase.filters.Filter] = FrechetCellFilter,
     filter_kwargs: dict | None = None,
     optim_kwargs: dict | None = None,
     log: str | Path | bool = True,  # NOT WORKING FOR FILES FOR SYMMETRIES
@@ -40,9 +37,8 @@ def two_stage_relax(
 ):
     if calculator is not None:
         atoms.calc = calculator
-    else:
-        if atoms.calc is None:
-            raise ValueError("Atoms object does not have a calculator assigned")
+    elif atoms.calc is None:
+        raise ValueError("Atoms object does not have a calculator assigned")
 
     if filter_kwargs is None:
         _filter_kwargs = {}
@@ -61,7 +57,7 @@ def two_stage_relax(
     else:
         ase_logfile = log
 
-    if "name" in atoms.info.keys():
+    if "name" in atoms.info:
         mat_name = atoms.info["name"]
     else:
         mat_name = f'{atoms.get_chemical_formula(mode="metal",empirical=True)}-{get_spacegroup(atoms,symprec=symprec).no}'

@@ -1,8 +1,6 @@
 from ase import Atoms
-
-from phonopy.structure.atoms import PhonopyAtoms
-
 from phono3py.api_phono3py import Phono3py
+from phonopy.structure.atoms import PhonopyAtoms
 
 
 def aseatoms2phonoatoms(atoms):
@@ -26,11 +24,11 @@ def aseatoms2phono3py(
 
 
 def phono3py2aseatoms(ph3: Phono3py) -> Atoms:
-    phonopyatoms = ph3.unitcell
+    phonopy_atoms = ph3.unitcell
     atoms = Atoms(
-        phonopyatoms.symbols,
-        cell=phonopyatoms.cell,
-        positions=phonopyatoms.positions,
+        phonopy_atoms.symbols,
+        cell=phonopy_atoms.cell,
+        positions=phonopy_atoms.positions,
         pbc=True,
     )
 

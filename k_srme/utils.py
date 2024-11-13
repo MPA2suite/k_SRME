@@ -1,19 +1,17 @@
+import datetime
 import io
 import sys
-import datetime
-import warnings
 import traceback
+import warnings
+from typing import Any, TextIO
 
 import numpy as np
-
 import pandas as pd
-
-
-from ase.io import read, write
 from ase import Atoms
+from ase.io import read, write
 from ase.utils import atoms_to_spglib_cell
-
 from spglib import get_symmetry_dataset
+
 
 FREQUENCY_THRESHOLD = -1e-2
 MODE_KAPPA_THRESHOLD = 1e-6
@@ -21,7 +19,7 @@ MODE_KAPPA_THRESHOLD = 1e-6
 symm_name_map = {225: "rs", 186: "wz", 216: "zb"}
 
 
-def aseatoms2str(atoms, format="extxyz"):
+def aseatoms2str(atoms: Atoms, format: str = "extxyz") -> str:
     buffer = io.StringIO()
     write(
         buffer,
@@ -32,14 +30,19 @@ def aseatoms2str(atoms, format="extxyz"):
     return atoms_string
 
 
-def str2aseatoms(atoms_string, format="extxyz"):
+def str2aseatoms(atoms_string: str, format: str = "extxyz") -> Atoms:
     buffer = io.StringIO(atoms_string)
     return read(buffer, format=format)
 
 
-def log_message(*messages, output=True, sep=" ", **kwargs):
+def log_message(
+    *messages: Any,
+    output: bool | str | TextIO = True,
+    sep: str = " ",
+    **kwargs: Any,
+) -> None:
     timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    write_message = f"{timestamp} - {sep.join((str(m) for m in messages))}"
+    write_message = f"{timestamp} - {sep.join(str(m) for m in messages)}"
 
     if output is False:
         pass
@@ -64,7 +67,7 @@ class ImaginaryFrequencyError(Exception):
         return repr(self.value)
 
 
-def check_imaginary_freqs(frequencies):
+def check_imaginary_freqs(frequencies: np.ndarray) -> bool:
     try:
         if np.all(pd.isna(frequencies)):
             return True
@@ -84,12 +87,14 @@ def check_imaginary_freqs(frequencies):
     return False
 
 
-def get_spacegroup_number(atoms, symprec=1e-5):
+def get_spacegroup_number(atoms: Atoms, symprec: float = 1e-5) -> int:
     dataset = get_symmetry_dataset(atoms_to_spglib_cell(atoms), symprec=symprec)
     return dataset.number
 
 
-def log_symmetry(atoms, symprec, output=True):
+def log_symmetry(
+    atoms: Atoms, symprec: float, output: bool | str | TextIO = True
+) -> Any:
     dataset = get_symmetry_dataset(atoms_to_spglib_cell(atoms), symprec=symprec)
 
     log_message(
