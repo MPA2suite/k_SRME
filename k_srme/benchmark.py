@@ -97,6 +97,13 @@ def get_metrics(df_mlp_filtered: pd.DataFrame) -> tuple[float, float, float, flo
     return mSRE, mSRME, rmseSRE, rmseSRME
 
 
+def get_success_metrics(df_mlp):
+    df_mlp_reduced = df_mlp[df_mlp["SRME"] != 2.0]
+    mSRE = df_mlp_reduced["SRE"].mean()
+    mSRME = df_mlp_reduced["SRME"].mean()
+    return mSRE, mSRME
+
+
 def calculate_kappa_ave(kappa: np.ndarray) -> float | np.ndarray:
     if np.any(pd.isna(kappa)):
         return np.nan
