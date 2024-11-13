@@ -17,6 +17,7 @@ phonopy and phono3py dependencies are optional to allow model output analysis.
  These pre-requisites need to be installed seperately or added to PYTHONPATH.
 See https://phonopy.github.io/phono3py/install.html for installation instructions of phono3py.
 
+We have tested the package with phono3py versions from 3.1.1 to 3.7.0 and Python versions 3.10 and higher.
 
 
 # Usage
