@@ -5,7 +5,7 @@
 # Install 
 Clone repository:
 ```
-git clone https://github.com/MPA2suite/k-srme.git
+git clone https://github.com/MPA2suite/k_SRME.git
 ```
 Then install in editable mode:
 ```
