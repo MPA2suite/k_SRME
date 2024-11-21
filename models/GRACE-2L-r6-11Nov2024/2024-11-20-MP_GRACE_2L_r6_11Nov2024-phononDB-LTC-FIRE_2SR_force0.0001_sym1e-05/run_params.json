@@ -8,7 +8,7 @@
     "versions": {
         "numpy": "1.26.4",
         "tensorflow": "2.16.2",
-        "tensorpotential": "0.4.3"
+        "tensorpotential": "0.4.4"
     },
     "ase_optimizer": "FIRE",
     "ase_filter": "frechet",
