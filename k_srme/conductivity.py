@@ -119,20 +119,11 @@ def init_phono3py(
         log_level = 1
 
     formula = atoms.get_chemical_formula(mode="metal")
-    if "fc2_supercell" not in atoms.info:
-        raise ValueError(
-            f'{formula} "fc2_supercell" was not found in atoms.info when calculating force sets.'
-        )
-
-    if "fc3_supercell" not in atoms.info:
-        raise ValueError(
-            f'{formula} "fc3_supercell" was not found in atoms.info when calculating force sets.'
-        )
-
-    if "q_mesh" not in atoms.info:
-        raise ValueError(
-            f'{formula} "q_mesh" was not found in atoms.info when calculating force sets.'
-        )
+    for key in ("fc2_supercell", "fc3_supercell", "q_mesh"):
+        if key not in atoms.info:
+            raise ValueError(
+                f'{formula} "{key}" was not found in atoms.info when calculating force sets.'
+            )
 
     # Initialise Phono3py object
     ph3 = aseatoms2phono3py(
