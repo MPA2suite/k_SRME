@@ -14,7 +14,6 @@ from k_srme.benchmark import calculate_mode_kappa_TOT
 from k_srme.phono3py_utils import aseatoms2phono3py, get_chemical_formula
 from k_srme.utils import MODE_KAPPA_THRESHOLD, log_message
 
-
 KAPPA_OUTPUT_NAME_MAP = {
     "weights": "grid_weights",
     "heat_capacity": "mode_heat_capacities",
@@ -120,20 +119,11 @@ def init_phono3py(
         log_level = 1
 
     formula = atoms.get_chemical_formula(mode="metal")
-    if "fc2_supercell" not in atoms.info:
-        raise ValueError(
-            f'{formula} "fc2_supercell" was not found in atoms.info when calculating force sets.'
-        )
-
-    if "fc3_supercell" not in atoms.info:
-        raise ValueError(
-            f'{formula} "fc3_supercell" was not found in atoms.info when calculating force sets.'
-        )
-
-    if "fc3_supercell" not in atoms.info:
-        raise ValueError(
-            f'{formula} "q_mesh" was not found in atoms.info when calculating force sets.'
-        )
+    for key in ("fc2_supercell", "fc3_supercell", "q_mesh"):
+        if key not in atoms.info:
+            raise ValueError(
+                f'{formula} "{key}" was not found in atoms.info when calculating force sets.'
+            )
 
     # Initialise Phono3py object
     ph3 = aseatoms2phono3py(
