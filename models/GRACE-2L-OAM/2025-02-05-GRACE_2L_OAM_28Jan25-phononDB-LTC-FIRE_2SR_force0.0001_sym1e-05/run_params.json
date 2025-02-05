@@ -1,0 +1,27 @@
+{
+    "timestamp": "2025-02-05 14:51:47",
+    "k_srme_version": "1.0.0",
+    "model_name": "GRACE_2L_OAM_28Jan25",
+    "checkpoint": "28Jan2025",
+    "device": "cuda",
+    "dtype": "float64",
+    "versions": {
+        "numpy": "1.26.4",
+        "tensorflow": "2.16.2",
+        "tensorpotential": "0.4.5"
+    },
+    "ase_optimizer": "FIRE",
+    "ase_filter": "frechet",
+    "if_two_stage_relax": true,
+    "max_steps": 300,
+    "force_max": 0.0001,
+    "symprec": 1e-05,
+    "enforce_relax_symm": true,
+    "conductivity_broken_symm": false,
+    "slurm_array_task_count": 16,
+    "slurm_array_job_id": "production",
+    "task_type": "LTC",
+    "job_name": "GRACE_2L_OAM_28Jan25-phononDB-LTC-FIRE_2SR_force0.0001_sym1e-05",
+    "struct_data_path": "phononDB-PBE-structures.extxyz",
+    "n_structures": 103
+}
