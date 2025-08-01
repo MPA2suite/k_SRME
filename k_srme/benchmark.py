@@ -182,27 +182,24 @@ def calculate_SRME(kappas_mlp: pd.Series, kappas_dft: pd.Series) -> list[float]:
     if np.any(pd.isna(kappas_mlp["weights"])):
         return [2]  # np.nan
     if np.any(pd.isna(kappas_dft["kappa_TOT_ave"])):
-        return [2]  # np.nan
+        name = kappas_dft.name if isinstance(kappas_dft.name, str) else "one entry"
+        raise ValueError(
+            f"kappa_TOT_ave in DFT kappas is NaN at {name}, cannot calculate SRME"
+        )
 
-    if "mode_kappa_TOT_ave" not in kappas_mlp:
-        if "mode_kappa_TOT" in kappas_mlp:
-            mlp_mode_kappa_TOT_ave = calculate_kappa_ave(kappas_mlp["mode_kappa_TOT"])
-        else:
-            mlp_mode_kappa_TOT_ave = calculate_kappa_ave(
-                calculate_mode_kappa_TOT(kappas_mlp)
-            )
-    else:
+    if "mode_kappa_TOT_ave" in kappas_mlp:
         mlp_mode_kappa_TOT_ave = np.asarray(kappas_mlp["mode_kappa_TOT_ave"])
-
-    if "mode_kappa_TOT_ave" not in kappas_dft:
-        if "mode_kappa_TOT" in kappas_dft:
-            dft_mode_kappa_TOT_ave = calculate_kappa_ave(kappas_dft["mode_kappa_TOT"])
-        else:
-            dft_mode_kappa_TOT_ave = calculate_kappa_ave(
-                calculate_mode_kappa_TOT(kappas_dft)
-            )
+    elif "mode_kappa_TOT" in kappas_mlp:
+        mlp_mode_kappa_TOT_ave = calculate_kappa_ave(kappas_mlp["mode_kappa_TOT"])
     else:
+        raise ValueError("mode_kappa_TOT_ave and mode_kappa_TOT not found in kappas_mlp")
+
+    if "mode_kappa_TOT_ave" in kappas_dft:
         dft_mode_kappa_TOT_ave = np.asarray(kappas_dft["mode_kappa_TOT_ave"])
+    elif "mode_kappa_TOT" in kappas_dft:
+        dft_mode_kappa_TOT_ave = calculate_kappa_ave(kappas_dft["mode_kappa_TOT"])
+    else:
+        raise ValueError("mode_kappa_TOT_ave and mode_kappa_TOT not found in kappas_dft")
 
     # calculating microscopic error for all temperatures
     microscopic_error = (
