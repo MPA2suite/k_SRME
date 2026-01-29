@@ -251,9 +251,12 @@ def calculate_conductivity(
         axis=tuple(range(1, mode_kappa_TOT.ndim - 1))
     ) / np.sum(kappa_dict["weights"])
 
-    if np.all((sum_mode_kappa_TOT - kappa_dict["kappa_P_RTA"]) <= MODE_KAPPA_THRESHOLD):
+    if np.any(
+        np.abs((sum_mode_kappa_TOT - kappa_dict["kappa_TOT_RTA"]))
+        > MODE_KAPPA_THRESHOLD
+    ):
         warnings.warn(
-            f"Total mode kappa does not sum to total kappa. mode_kappa_TOT sum : {sum_mode_kappa_TOT}, kappa_TOT_RTA : {kappa_dict['kappa_P_RTA']}"
+            f"Total mode kappa does not sum to total kappa. max mode_kappa_TOT sum - kappa_TOT_RTA : {np.abs(sum_mode_kappa_TOT - kappa_dict['kappa_TOT_RTA']).max():3e}"
         )
 
     return ph3, kappa_dict
