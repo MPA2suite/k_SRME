@@ -1,5 +1,7 @@
 # κ_SRME: heat-conductivity benchmark test for foundational machine-learning potentials based on the Wigner Transport Equation 
 
+[![DOI](https://zenodo.org/badge/885999717.svg)](https://doi.org/10.5281/zenodo.21001475)
+
 κ_SRME employs foundation Machine Learning Interatomic Potentials and phono3py to determine the wigner thermal conductivity in crystals and compare them to DFT reference data.
 
 # Install 
